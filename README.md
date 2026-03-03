@@ -1,6 +1,6 @@
 # CaRMS Residency Data Platform Demo
 
-Portfolio MVP built from public-facing CaRMS residency program data. The project is designed around the stack highlighted in the CaRMS Junior Data Scientist posting: `PostgreSQL + Python + SQLModel + FastAPI`, with a retrieval layer for semantic search and Q&A.
+Portfolio MVP built from public-facing CaRMS residency program data. The project is structured as a small internal-style data platform using the stack highlighted in the CaRMS Junior Data Scientist posting: `PostgreSQL + Python + SQLModel + FastAPI`, with a retrieval layer for semantic search and Q&A.
 
 This repo is intentionally framed as a small internal-style data platform rather than a chatbot-only demo.
 
@@ -14,6 +14,8 @@ Public deployment currently demonstrates:
 - reporting endpoint
 - `POST /search/semantic`
 - `POST /ask-preview`
+
+The public deployment demonstrates API design and retrieval behavior rather than full production orchestration.
 
 ## What This Project Does
 
@@ -49,6 +51,8 @@ API-ready SQL view:
 
 - `program_api_dataset`
 
+The SQL view abstracts normalized relational tables into an API-consumable dataset for downstream services.
+
 Current dataset size:
 
 - `37` disciplines
@@ -69,9 +73,9 @@ Current dataset size:
 
 ## Demo Notes
 
-- Public Render demo is intentionally scoped for simplicity and stability.
-- The hosted demo path is `POST /ask-preview`, not `POST /ask`.
-- `POST /ask` is implemented in this repo, but it is currently intended for local use with Ollama.
+- The hosted demo prioritizes stability and deterministic behavior.
+- `POST /ask-preview` is recommended for public testing.
+- `POST /ask` is implemented but intended for local experimentation with Ollama.
 - Public deployment uses the simpler PostgreSQL retrieval path rather than the local embeddings-backed path.
 
 ## Why No Dagster Yet
@@ -84,7 +88,7 @@ That is an intentional scope decision for this MVP:
 - the ingestion flow is already reproducible with Python loader scripts and `make` targets
 - the project prioritizes relational modeling, API design, retrieval behavior, and tests before orchestration
 
-If this project evolved into a recurring or scheduled pipeline, Dagster would be a sensible next step.
+If this project evolved into a recurring or scheduled pipeline, Dagster would be a sensible next step. The design keeps orchestration decoupled from modeling and API layers.
 
 ## Local Run
 
@@ -110,7 +114,7 @@ Recent local status:
 
 - embeddings backfill completed: `25,486 / 25,486`
 - `/ask` smoke test succeeded locally
-- live integration suite: `11 passed`
+- live integration suite: `11 passed` (API contract and retrieval path validation)
 
 ## Local Ollama Path
 
