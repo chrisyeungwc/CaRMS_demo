@@ -18,6 +18,16 @@ app.include_router(reports_router)
 app.include_router(search_router)
 
 
+@app.get("/")
+def root() -> dict[str, str]:
+    return {
+        "service": "CaRMS Residency Data Platform",
+        "status": "ok",
+        "docs_url": "/docs",
+        "health_url": "/health",
+    }
+
+
 @app.get("/health")
 def healthcheck() -> dict[str, str]:
     return {"status": "ok"}
