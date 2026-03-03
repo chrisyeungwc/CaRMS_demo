@@ -5,7 +5,14 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session
 
 from app.db import get_db_session
-from app.schemas import AskRequest, AskResponse, SearchChunkResult, SearchRequest, SearchResponse
+from app.schemas import (
+    AskPreviewRequest,
+    AskRequest,
+    AskResponse,
+    SearchChunkResult,
+    SearchRequest,
+    SearchResponse,
+)
 from app.services.search import search_chunks
 
 
@@ -94,7 +101,9 @@ def semantic_search(
 
 
 @router.post("/ask-preview", response_model=AskResponse)
-def ask_preview(request: AskRequest, session: Session = Depends(get_db_session)) -> AskResponse:
+def ask_preview(
+    request: AskPreviewRequest, session: Session = Depends(get_db_session)
+) -> AskResponse:
     results = search_chunks(
         session=session,
         query=request.question,

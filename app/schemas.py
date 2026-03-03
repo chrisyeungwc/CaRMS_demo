@@ -181,6 +181,13 @@ class AskRequest(BaseModel):
     model: str = "qwen3:0.6b"
 
 
+class AskPreviewRequest(BaseModel):
+    question: str
+    limit: int = 5
+    discipline: str | None = None
+    content_language: str | None = None
+
+
 class AskResponse(BaseModel):
     question: str
     answer: str
