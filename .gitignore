@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.DS_Store
+.pytest_cache/
+
+# Local-only notes and application materials
+README(self-use).md
+Job Description.md
+Note.ipynb
+
+# Keep only the source files required to rebuild the demo dataset
+source/1503_markdown_program_descriptions.json
+source/1503_program_descriptions.json
+source/1503_program_descriptions_v2.json
+source/program_descriptions/

@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: carms_postgres
+    environment:
+      POSTGRES_DB: carms
+      POSTGRES_USER: carms
+      POSTGRES_PASSWORD: carms
+    ports:
+      - "5433:5432"
+    volumes:
+      - carms_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U carms -d carms"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  carms_postgres_data:
