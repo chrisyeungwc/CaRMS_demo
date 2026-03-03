@@ -3,13 +3,6 @@ __pycache__/
 .DS_Store
 .pytest_cache/
 
-# Local-only notes and application materials
-README(self-use).md
-Job Description.md
-Note.ipynb
-INTERVIEW_DEMO.md
-PROJECT_STATUS.md
-
 # Keep only the source files required to rebuild the demo dataset
 source/1503_markdown_program_descriptions.json
 source/1503_program_descriptions.json

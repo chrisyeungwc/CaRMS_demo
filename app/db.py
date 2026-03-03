@@ -17,7 +17,7 @@ def build_database_url() -> str:
 
 
 DATABASE_URL = build_database_url()
-engine = create_engine(DATABASE_URL, echo=False)
+engine = create_engine(DATABASE_URL, echo=False, pool_pre_ping=True)
 logger = logging.getLogger(__name__)
 
 
